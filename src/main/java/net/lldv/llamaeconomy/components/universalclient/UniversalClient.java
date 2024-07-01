@@ -27,10 +27,6 @@ public class UniversalClient {
                     this.connection = new YamlConnection();
                     this.connection.connect(details);
                     break;
-                case MySql:
-                    this.connection = new MySqlConnection();
-                    this.connection.connect(details);
-                    break;
                 case MongoDB:
                     this.connection = new MongoDbConnection();
                     this.connection.connect(details);

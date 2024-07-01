@@ -3,23 +3,9 @@
 # Warning: when using MySQL you need to install DBDrivers.
 Provider: "yaml"
 
-DefaultMoney: 1000.0
+DefaultMoney: 500.0
 MonetaryUnit: "$"
 
-# --- MongoDB ---
-MongoDB:
-  Uri: "mysuperduperuri"
-  Database: "llamaeconomy"
-
-# --- MySQL ---
-MySql:
-  Host: "127.0.0.1"
-  Port: "3306"
-  User: "root"
-  Password: "HAHA_XD_ROFL_123"
-  Database: "llamaeconomy"
-
-# Here you can edit the commands
 Commands:
   Addmoney:
     Name: "addmoney"

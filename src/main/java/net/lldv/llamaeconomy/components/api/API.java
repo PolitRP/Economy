@@ -16,13 +16,22 @@ import java.util.concurrent.CompletableFuture;
 
 @RequiredArgsConstructor
 public class API {
+    private static API instance;
 
-    private final LlamaEconomy plugin;
-    private final Provider provider;
+    public final LlamaEconomy plugin;
+    public final Provider provider;
+
+    public static API getInstance() {
+        return instance;
+    }
+
+    public static void initialize(LlamaEconomy plugin, Provider provider) {
+        instance = new API(plugin, provider);
+    }
 
     public boolean hasAccount(UUID uuid) {
         String name = this.plugin.getServer().getOfflinePlayer(uuid).getName();
-        return this.hasAccount(name);
+        return this.provider.hasAccount(name);
     }
 
     public boolean hasAccount(Player player) {
@@ -111,5 +120,4 @@ public class API {
     public double getDefaultMoney() {
         return this.plugin.getDefaultMoney();
     }
-
 }

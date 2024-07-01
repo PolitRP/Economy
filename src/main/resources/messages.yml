@@ -1,4 +1,4 @@
-prefix: "§8» §eLlamaEconomy §8| §7"
+prefix: "§8» §eServer §8| §7"
 
 # --- General Errors ---
 usage: "§cUsage: §r[0]"
@@ -9,9 +9,9 @@ not-registered: "§cThere is no player registered with the name [0]."
 # --- Commands ---
 # /money
 # [0] = monetary unit, [1] = amount
-money: "§aYou currently have [0][1]."
+money: "§aВаш баланс: [0][1]."
 # [0] = name of player, [1] = monetary unit, [2] = amount
-money-other: "§a[0] currently has [1][2]."
+money-other: "§a[0] имеет [1][2]."
 
 # /setmoney
 # [0] = name of player, [1] = monetary unit, [2] = amount
@@ -26,19 +26,19 @@ added-money: "§aYou added [1][2] to [0]."
 reduced-money: "§aYou reduced the money of [0] by [1][2]."
 
 # /pay
-pay-not-enough-money: "§cYou don't have enough money."
+pay-not-enough-money: "§cУ вас недостаточно денег."
 # [0] = name of player, [1] = monetary unit, [2] = amount
-you-paid: "§aYou paid [0] [1][2]"
+you-paid: "§aВы заплатили [0] [1][2]"
 # [0] = name of player, [1] = monetary unit, [2] = amount
-paid-you: "[0] paid you [1][2]"
+paid-you: "[0] заплатил вам [1][2]"
 
 # /topmoney
 topmoney-invalid: "§cPlease provide a valid page number."
-topmoney-header: "§e--- Richest Players ---"
+topmoney-header: "§e--- Богатейшией игроки ---"
 # [0] = position, [1] = playername, [2] = monetary unit, [3] = money
 topmoney-player: "§a[0]. [1] §6[2][3]"
-topmoney-siteinfo: "§aPage §a[§6[0]§a/§6[1]§a]"
-topmoney-footer: "§e--- Richest Players ---"
+topmoney-siteinfo: "§aСтраница §a[§6[0]§a/§6[1]§a]"
+topmoney-footer: "§e--- Богатейшие игроки ---"
 
 # /lecoreload
 reload: "§eReloading LlamaEconomy..."

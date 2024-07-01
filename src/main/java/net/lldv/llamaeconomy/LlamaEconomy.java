@@ -4,14 +4,15 @@ import cn.nukkit.command.CommandMap;
 import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.utils.Config;
 import lombok.Getter;
-import lombok.Setter;
 import net.lldv.llamaeconomy.commands.*;
-import net.lldv.llamaeconomy.components.provider.*;
-import net.lldv.llamaeconomy.components.universalclient.UniversalClient;
-import net.lldv.llamaeconomy.components.universalclient.data.clientdetails.*;
-import net.lldv.llamaeconomy.listener.PlayerListener;
 import net.lldv.llamaeconomy.components.api.API;
 import net.lldv.llamaeconomy.components.language.Language;
+import net.lldv.llamaeconomy.listener.OnlineRewardListener;
+import net.lldv.llamaeconomy.listener.PlayerListener;
+import net.lldv.llamaeconomy.components.provider.Provider;
+import net.lldv.llamaeconomy.components.universalclient.UniversalClient;
+import net.lldv.llamaeconomy.components.universalclient.data.clientdetails.MongoDbDetails;
+import net.lldv.llamaeconomy.components.universalclient.data.clientdetails.YamlDetails;
 
 import java.text.DecimalFormat;
 
@@ -43,24 +44,12 @@ public class LlamaEconomy extends PluginBase {
         Language.init(this);
 
         this.getLogger().info("§aStarting LlamaEconomy...");
-
+        getServer().getPluginManager().registerEvents(new OnlineRewardListener(this), this);
         this.defaultMoney = config.getDouble("DefaultMoney");
         this.monetaryUnit = config.getString("MonetaryUnit");
 
         UniversalClient client;
         switch (this.getConfig().getString("Provider").toLowerCase()) {
-            case "mysql":
-                client = new UniversalClient(
-                        UniversalClient.Type.MySql,
-                        new MySqlDetails(
-                                this.getConfig().getString("MySql.Host"),
-                                this.getConfig().getString("MySql.Port"),
-                                this.getConfig().getString("MySql.User"),
-                                this.getConfig().getString("MySql.Password"),
-                                this.getConfig().getString("MySql.Database")
-                        )
-                );
-                break;
             case "mongodb":
                 client = new UniversalClient(
                         UniversalClient.Type.MongoDB,
@@ -79,7 +68,7 @@ public class LlamaEconomy extends PluginBase {
                 );
                 break;
             default:
-                this.getLogger().error("§4Please specify a valid provider: Yaml, MySql, MongoDB");
+                this.getLogger().error("§4Please specify a valid provider: Yaml, MongoDB");
                 this.getServer().getPluginManager().disablePlugin(this);
                 return;
         }
